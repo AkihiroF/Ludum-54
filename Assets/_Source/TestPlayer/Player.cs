@@ -1,11 +1,15 @@
+using System;
+using GameUISystem;
 using ObjectSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TestPlayer
 {
     public class Player : MonoBehaviour
     {
+        public event Action LookOnItem;
+        public event Action NotLookOnItem;
+        
         [SerializeField] private Transform transformCamera;
         [SerializeField] private Transform hand;
         [SerializeField] private Rigidbody rb;
@@ -15,12 +19,19 @@ namespace TestPlayer
         [SerializeField] private float distance;
         [SerializeField] private FixedJoint joint;
 
+        [SerializeField] private GameUIView view;
+        private GameUI _controller;
+
         private InteractionWithTheInterior _interactionWithTheInterior;
         private InteractionWithTheKey _interactionWithTheKey;
         private RaycastHit _hit;
         
         void Start()
         {
+            _controller = new GameUI(view);
+            LookOnItem += _controller.LookOnItem;
+            NotLookOnItem += _controller.NotLookOnItem;
+            
             _interactionWithTheInterior = new InteractionWithTheInterior(hand, joint);
             _interactionWithTheKey = new InteractionWithTheKey();
         }
@@ -47,11 +58,13 @@ namespace TestPlayer
                 && !_interactionWithTheInterior.HaveItem
                 && Input.GetKeyDown(KeyCode.F))
             {
+                //LookOnItem?.Invoke();
                 _interactionWithTheInterior.Selection(_hit.transform);
             }
             else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, distance, selectionTheKey)
                      && Input.GetKeyDown(KeyCode.F))
             {
+                //LookOnItem?.Invoke();
                 _interactionWithTheKey.Selection(_hit.transform.gameObject);
             }
             else if (_interactionWithTheInterior.HaveItem
@@ -63,6 +76,20 @@ namespace TestPlayer
                      && _interactionWithTheInterior.HaveItem)
             {
                 // TODO Rotate object AxisX
+            }
+            // else
+            // {
+            //     NotLookOnItem?.Invoke();
+            // }
+            if (Physics.Raycast(transformCamera.position, transformCamera.forward,  out _hit, distance, selectionTheInterior)
+                && !_interactionWithTheInterior.HaveItem
+                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, distance, selectionTheKey))
+            {
+                LookOnItem?.Invoke();
+            }
+            else
+            {
+                NotLookOnItem?.Invoke();
             }
         }
     }
