@@ -36,6 +36,7 @@ namespace Core.GameStates
 
         private void SubscribeToEvents()
         {
+            _playerInput.PlayerActions.RotateItem.performed += _inputHandler.InputRotateItem;
             _playerInput.PlayerActions.ScalingUp.performed += _inputHandler.InputUpScaling;
             _playerInput.PlayerActions.ScalingDown.performed += _inputHandler.InputDownScaling;
             _playerInput.PlayerActions.Interaction.performed += _inputHandler.Interaction;

@@ -6,6 +6,6 @@ namespace Player
     {
         void SetParameters(float distance, LayerMask selectionTheInterior, LayerMask selectionTheKey);
         void InteractionWithObjects();
-        void ObjectRotate();
+        void ObjectRotate(float angle);
     }
 }
