@@ -1,9 +1,7 @@
-using System;
-using _Source.SO;
-using ObjectSystem;
+using SO;
 using UnityEngine;
 
-namespace _Source.Player
+namespace Player
 {
     public class PlayerSetterParameters : MonoBehaviour, ISetterParameters
     {
@@ -14,6 +12,12 @@ namespace _Source.Player
         [SerializeField] private PlayerInteraction interaction;
 
         private SizePlayer _currentSize;
+        private  ZoneParametersSo CurrentZone { get; set; }
+
+        public void SetCurrentZone(ZoneParametersSo newZone)
+        {
+            CurrentZone = newZone;
+        }
 
         private const SizePlayer MaxSize = SizePlayer.Big;
         private const SizePlayer MinSize = SizePlayer.Small;
@@ -52,7 +56,13 @@ namespace _Source.Player
         private void ChangeSize(int sizeDelta)
         {
             SizePlayer newSize = _currentSize + sizeDelta;
-            if (newSize <= MaxSize && newSize >= MinSize)
+
+            if (CurrentZone != null && newSize > CurrentZone.GetMaxSize)
+            {
+                return;
+            }
+
+            if (newSize is <= MaxSize and >= MinSize)
             {
                 _currentSize = newSize;
                 SwitchParameters();

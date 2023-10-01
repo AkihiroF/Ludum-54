@@ -2,7 +2,7 @@
 using ObjectSystem;
 using UnityEngine;
 
-namespace _Source.Player
+namespace Player
 {
     public class PlayerInteraction : MonoBehaviour, IInteraction
     {

@@ -28,7 +28,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace _Source.Services
+namespace Services
 {
     /// <summary>
     /// Base interface for Signals
