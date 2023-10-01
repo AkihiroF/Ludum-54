@@ -1,5 +1,3 @@
-using Events;
-using Services;
 using UnityEngine;
 using Zenject;
 
@@ -7,16 +5,25 @@ namespace Core.GameStates
 {
     public class InGameState : IGameState
     {
+        private readonly IUIController _uiUIController;
+        private readonly IResource _key;
+        private readonly PlayerInput _input;
+
         private bool _isActiveRotating;
+
         [Inject]
-        public InGameState(PlayerInput input)
+        public InGameState(PlayerInput input, IResource key, IUIController uiController)
         {
             _input = input;
+            _uiUIController = uiController;
+            _key = key;
         }
-        private PlayerInput _input;
         public void OnEnter()
         {
             _input.PlayerActions.Enable();
+            _uiUIController.SubscribeToEvents();
+            _key.SubscribeToEvents();
+            _key.UpdateResourceCount();
             _input.PlayerActions.RotateItem.Disable();
             
             Cursor.visible = false;
@@ -25,7 +32,7 @@ namespace Core.GameStates
 
         public void OnExit()
         {
-            _input.PlayerActions.Disable();
+            
         }
 
         public void Update()

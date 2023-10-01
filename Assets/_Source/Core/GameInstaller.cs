@@ -1,6 +1,3 @@
-using Core.GameStates;
-using Input;
-using Player;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +8,8 @@ namespace Core
         [SerializeField] private PlayerMovementComponent movementComponent;
         [SerializeField] private PlayerSetterParameters setterParameters;
         [SerializeField] private PlayerInteraction interaction;
+        [SerializeField] private GameUIView gameView;
+        [SerializeField] private int maxCount;
         
         public override void InstallBindings()
         {
@@ -22,8 +21,15 @@ namespace Core
             Container.Bind<InputHandler>().AsSingle().NonLazy();
             Container.Bind<IGameState>().To<BindingState>().AsSingle().NonLazy();
             Container.Bind<IGameState>().To<InGameState>().AsSingle().NonLazy();
+            Container.Bind<IGameState>().To<PauseState>().AsSingle().NonLazy();
+            Container.Bind<IGameState>().To<ExitState>().AsSingle().NonLazy();
             Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle().NonLazy();
             Container.Bind<Bootstrapper>().AsSingle();
+
+            Container.Bind<IUIView>().To<GameUIView>().FromInstance(gameView);
+            Container.Bind<IUIController>().To<GameUI>().AsSingle();
+
+            Container.Bind<IResource>().To<Key>().AsSingle().WithArguments(maxCount);
         }
     }
 }

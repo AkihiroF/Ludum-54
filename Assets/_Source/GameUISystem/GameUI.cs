@@ -1,46 +1,47 @@
-﻿namespace GameUISystem
+﻿using _Source.Events;
+using _Source.Services;
+using Zenject;
+
+namespace GameUISystem
 {
-    public class GameUI
+    public class GameUI : IUIController
     {
-        private readonly GameUIView _view;
+        private readonly IUIView _view;
+        private int _keyCount;
         
-        public GameUI(GameUIView view)
+        [Inject]
+        public GameUI(IUIView view)
         {
             _view = view;
         }
         
-        public void LookOnItem()
+        private void LookOnItem()
         {
             _view.HintEnable();
         }
 
-        public void NotLookOnItem()
+        private void NotLookOnItem()
         {
             _view.HintDisable();
         }
-        
-        public void AddEvent()
+
+        private void KeyCount(int count, int maxCount)
         {
-            // _continueButton.onClick.AddListener(Continue);
-            // _settingsButton.onClick.AddListener(OpenSettings);
-            // _backButton.onClick.AddListener(CloseSettings);
-            // _exitButton.onClick.AddListener(Exit);
-            //
-            // Signals.Get<CloseEyeSignal>().AddListener(CloseEye);
-            //
-            // _view.OnOpenEye += EnablePlayerInput;
+            _view.KeyCount(count.ToString(), maxCount.ToString());
+        }
+        
+        public void SubscribeToEvents()
+        {
+            Signals.Get<OnLookOnObject>().AddListener(LookOnItem);
+            Signals.Get<OnNotLookOnObject>().AddListener(NotLookOnItem);
+            Signals.Get<OnChangeResource>().AddListener(KeyCount);
         }
 
-        public void RemoveEvent()
+        public void UnSubscribeToEvents()
         {
-            // _continueButton.onClick.RemoveListener(Continue);
-            // _settingsButton.onClick.RemoveListener(OpenSettings);
-            // _backButton.onClick.RemoveListener(CloseSettings);
-            // _exitButton.onClick.RemoveListener(Exit);
-            //
-            // Signals.Get<CloseEyeSignal>().RemoveListener(CloseEye);
-            //
-            // _view.OnOpenEye -= EnablePlayerInput;
+            Signals.Get<OnLookOnObject>().RemoveListener(LookOnItem);
+            Signals.Get<OnNotLookOnObject>().RemoveListener(NotLookOnItem);
+            Signals.Get<OnChangeResource>().RemoveListener(KeyCount);
         }
     }
 }

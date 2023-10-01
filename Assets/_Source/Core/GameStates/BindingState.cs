@@ -1,5 +1,3 @@
-using Input;
-using Player;
 using Zenject;
 
 namespace Core.GameStates
