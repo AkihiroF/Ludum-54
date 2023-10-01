@@ -10,11 +10,13 @@ namespace _Source.Core
     {
         [SerializeField] private PlayerMovementComponent movementComponent;
         [SerializeField] private PlayerSetterParameters setterParameters;
+        [SerializeField] private PlayerInteraction interaction;
         
         public override void InstallBindings()
         {
             Container.Bind<IMovable>().To<PlayerMovementComponent>().FromInstance(movementComponent);
             Container.Bind<ISetterParameters>().To<PlayerSetterParameters>().FromInstance(setterParameters);
+            Container.Bind<IInteraction>().To<PlayerInteraction>().FromInstance(interaction);
             
             Container.Bind<PlayerInput>().AsSingle().NonLazy();
             Container.Bind<InputHandler>().AsSingle().NonLazy();

@@ -15,21 +15,30 @@ MonoBehaviour:
   BigPlayerParameters:
     speed: 20
     scale: 3
-    radiusInteractable: 0
-    interactableLayers:
+    radiusInteractable: 6
+    interactableInteriorLayers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 896
+    interactableKeyLayers:
+      serializedVersion: 2
+      m_Bits: 64
   MediumParameters:
     speed: 20
     scale: 2
-    radiusInteractable: 0
-    interactableLayers:
+    radiusInteractable: 4
+    interactableInteriorLayers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 768
+    interactableKeyLayers:
+      serializedVersion: 2
+      m_Bits: 64
   SmallParameters:
     speed: 20
     scale: 1
-    radiusInteractable: 0
-    interactableLayers:
+    radiusInteractable: 2
+    interactableInteriorLayers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 512
+    interactableKeyLayers:
+      serializedVersion: 2
+      m_Bits: 64

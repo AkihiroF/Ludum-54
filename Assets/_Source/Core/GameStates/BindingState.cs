@@ -38,6 +38,7 @@ namespace _Source.Core.GameStates
         {
             _playerInput.PlayerActions.ScalingUp.performed += _inputHandler.InputUpScaling;
             _playerInput.PlayerActions.ScalingDown.performed += _inputHandler.InputDownScaling;
+            _playerInput.PlayerActions.Interaction.performed += _inputHandler.Interaction;
         }
     }
 }
