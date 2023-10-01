@@ -46,7 +46,7 @@ namespace ObjectSystem
 
         public void RotateObject(float rotateAmount)
         {
-            _item.transform.Rotate(rotateAmount, 0, 0);
+            _item.transform.Rotate(0, rotateAmount, 0);
         }
 
         private void ResetParameters()

@@ -3,7 +3,7 @@ using GameUISystem;
 using Input;
 using Player;
 using ResourceSystem;
-using UnityEditor;
+using ObjectSystem;
 using UnityEngine;
 using Zenject;
 
@@ -14,11 +14,13 @@ namespace Core
         [SerializeField] private PlayerMovementComponent movementComponent;
         [SerializeField] private PlayerSetterParameters setterParameters;
         [SerializeField] private PlayerInteraction interaction;
+        [SerializeField] private SceneTransition transition;
         [SerializeField] private GameUIView gameView;
         [SerializeField] private int maxCount;
         
         public override void InstallBindings()
         {
+            Container.Bind<ISceneTransit>().To<SceneTransition>().FromInstance(transition);
             Container.Bind<IMovable>().To<PlayerMovementComponent>().FromInstance(movementComponent);
             Container.Bind<ISetterParameters>().To<PlayerSetterParameters>().FromInstance(setterParameters);
             Container.Bind<IInteraction>().To<PlayerInteraction>().FromInstance(interaction);

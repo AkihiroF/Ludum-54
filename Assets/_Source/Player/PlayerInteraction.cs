@@ -2,6 +2,7 @@ using Events;
 using ObjectSystem;
 using Services;
 using UnityEngine;
+using Zenject;
 
 namespace Player
 {
@@ -9,6 +10,7 @@ namespace Player
     {
         [SerializeField] private Transform transformCamera;
         [SerializeField] private Transform hand;
+        [SerializeField] private LayerMask selectionTheDoor;
         
         private RaycastHit _hit;
         private InteractionWithTheInterior _interactionWithTheInterior; 
@@ -16,6 +18,11 @@ namespace Player
         private float _distance;
         private LayerMask _selectionTheInterior;
         private LayerMask _selectionTheKey;
+
+        [Inject] private ISceneTransit _transit;
+
+        public bool HoldObject 
+            => _interactionWithTheInterior.HaveItem;
 
         private void Start()
         {
@@ -32,7 +39,8 @@ namespace Player
         {
             if (Physics.Raycast(transformCamera.position, transformCamera.forward,  out _hit, _distance, _selectionTheInterior)
                 && !_interactionWithTheInterior.HaveItem
-                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
+                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey)
+                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, selectionTheDoor))
             {
                 Signals.Get<OnLookOnObject>().Dispatch();
             }
@@ -60,6 +68,11 @@ namespace Player
             else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
             {
                 _interactionWithTheKey.Selection(_hit.transform.gameObject);
+                Signals.Get<OnUpdateGameState>().Dispatch();
+            }
+            else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, selectionTheDoor))
+            {
+                _transit.OnStartTransit();
                 Signals.Get<OnUpdateGameState>().Dispatch();
             }
             else if (_interactionWithTheInterior.HaveItem)
