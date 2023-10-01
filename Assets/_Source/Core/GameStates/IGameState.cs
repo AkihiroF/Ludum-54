@@ -1,4 +1,4 @@
-namespace _Source.Core.GameStates
+namespace Core.GameStates
 {
     public interface IGameState
     {

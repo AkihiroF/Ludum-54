@@ -61,6 +61,10 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# Rider
+.idea/
+*.sln.iml
+
 # Crashlytics generated file
 crashlytics-build.properties
 

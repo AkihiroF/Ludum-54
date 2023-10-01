@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Source.Player
+namespace Player
 {
     public interface IInteraction
     {

@@ -1,8 +1,8 @@
-using _Source.Input;
-using _Source.Player;
+using Input;
+using Player;
 using Zenject;
 
-namespace _Source.Core.GameStates
+namespace Core.GameStates
 {
     public class BindingState : IGameState
     {

@@ -1,10 +1,10 @@
-using _Source.Core.GameStates;
-using _Source.Events;
-using _Source.Services;
+using Core.GameStates;
+using Events;
+using Services;
 using UnityEngine;
 using Zenject;
 
-namespace _Source.Core
+namespace Core
 {
     public class Bootstrapper : MonoBehaviour
     {

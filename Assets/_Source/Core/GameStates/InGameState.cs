@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace _Source.Core.GameStates
+namespace Core.GameStates
 {
     public class InGameState : IGameState
     {

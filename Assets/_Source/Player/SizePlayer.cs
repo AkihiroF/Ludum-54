@@ -1,6 +1,6 @@
 using System;
 
-namespace _Source.Player
+namespace Player
 {
     [Serializable]
     public enum SizePlayer

@@ -1,8 +1,8 @@
 using System;
-using _Source.Player;
+using Player;
 using UnityEngine;
 
-namespace _Source.SO
+namespace SO
 {
     [CreateAssetMenu(menuName = "Player Parameters", fileName = "Player Parameters")]
     public class PlayerParametersSo : ScriptableObject

@@ -1,8 +1,8 @@
-using _Source.Player;
+using Player;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace _Source.Input
+namespace Input
 {
     public class InputHandler
     {
