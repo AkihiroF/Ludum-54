@@ -1,3 +1,5 @@
+using Events;
+using Services;
 using UnityEngine;
 using Zenject;
 
@@ -5,6 +7,7 @@ namespace Core.GameStates
 {
     public class InGameState : IGameState
     {
+        private bool _isActiveRotating;
         [Inject]
         public InGameState(PlayerInput input)
         {
@@ -14,6 +17,8 @@ namespace Core.GameStates
         public void OnEnter()
         {
             _input.PlayerActions.Enable();
+            _input.PlayerActions.RotateItem.Disable();
+            
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -25,7 +30,15 @@ namespace Core.GameStates
 
         public void Update()
         {
-            
+            _isActiveRotating = !_isActiveRotating;
+            if (_isActiveRotating)
+            {
+                _input.PlayerActions.RotateItem.Enable();
+            }
+            else
+            {
+                _input.PlayerActions.RotateItem.Disable();
+            }
         }
     }
 }

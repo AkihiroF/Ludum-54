@@ -44,6 +44,11 @@ namespace ObjectSystem
             ResetParameters();
         }
 
+        public void RotateObject(float rotateAmount)
+        {
+            _item.transform.Rotate(rotateAmount, 0, 0);
+        }
+
         private void ResetParameters()
         {
             _itemCollider = null;
