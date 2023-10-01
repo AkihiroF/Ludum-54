@@ -1,5 +1,7 @@
 using _Source.Input;
 using _Source.Player;
+using GameUISystem;
+using UnityEngine;
 using Zenject;
 
 namespace _Source.Core.GameStates

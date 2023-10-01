@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using _Source.Events;
+using _Source.Services;
+using UnityEngine;
 
 namespace ObjectSystem
 {
@@ -7,7 +9,7 @@ namespace ObjectSystem
         public void Selection(GameObject key)
         {
             key.SetActive(false);
-            // TODO signal about taking key
+            Signals.Get<OnTakingKey>().Dispatch();
         }
     }
 }

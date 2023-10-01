@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _Source.Events;
+using _Source.Services;
 using ObjectSystem;
 using UnityEngine;
 
@@ -6,9 +7,6 @@ namespace _Source.Player
 {
     public class PlayerInteraction : MonoBehaviour, IInteraction
     {
-        public event Action LookOnItem;
-        public event Action NotLookOnItem;
-        
         [SerializeField] private Transform transformCamera;
         [SerializeField] private Transform hand;
         
@@ -36,11 +34,11 @@ namespace _Source.Player
                 && !_interactionWithTheInterior.HaveItem
                 || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
             {
-                LookOnItem?.Invoke();
+                Signals.Get<OnLookOnObject>().Dispatch();
             }
             else
             {
-                NotLookOnItem?.Invoke();
+                Signals.Get<OnNotLookOnObject>().Dispatch();
             }
         }
 
@@ -56,12 +54,10 @@ namespace _Source.Player
             if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheInterior)
                 && !_interactionWithTheInterior.HaveItem)
             {
-                //LookOnItem?.Invoke();
                 _interactionWithTheInterior.Selection(_hit.transform);
             }
             else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
             {
-                //LookOnItem?.Invoke();
                 _interactionWithTheKey.Selection(_hit.transform.gameObject);
             }
             else if (_interactionWithTheInterior.HaveItem)
