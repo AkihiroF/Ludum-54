@@ -7,6 +7,7 @@ namespace Player
     public class PlayerMovementComponent : MonoBehaviour, IMovable
     {
         [SerializeField] private Transform headCamera;
+        private float _dragFactor;
         private InputAction _movingAction;
 
         private float _currentSpeed;
@@ -33,6 +34,7 @@ namespace Player
         public void SwitchParametersMoving(float speed)
         {
             _currentSpeed = speed;
+            _dragFactor = speed / 2;
         }
 
         private void FixedUpdate()
@@ -52,8 +54,21 @@ namespace Player
             {
                 Vector3 moveInput = _movingAction.ReadValue<Vector3>();
                 Vector3 direction = moveInput.normalized * _currentSpeed;
-                direction.y = _rb.velocity.y;
-                _rb.velocity = transform.TransformDirection(direction);
+
+                direction = transform.TransformDirection(direction);
+
+                Vector3 force = new Vector3(direction.x, _rb.velocity.y, direction.z);
+
+                _rb.AddForce(force, ForceMode.Force);
+
+                if (_rb.velocity.magnitude > _currentSpeed)
+                {
+                    _rb.velocity = _rb.velocity.normalized * _currentSpeed;
+                }
+                if (moveInput.magnitude == 0 || _rb.velocity.magnitude < 0.1f)
+                {
+                    _rb.AddForce(-_rb.velocity * _dragFactor, ForceMode.Force);
+                }
             }
         }
     }
