@@ -1,3 +1,9 @@
+using Core.GameStates;
+using GameUISystem;
+using Input;
+using Player;
+using ResourceSystem;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -21,7 +27,6 @@ namespace Core
             Container.Bind<InputHandler>().AsSingle().NonLazy();
             Container.Bind<IGameState>().To<BindingState>().AsSingle().NonLazy();
             Container.Bind<IGameState>().To<InGameState>().AsSingle().NonLazy();
-            Container.Bind<IGameState>().To<PauseState>().AsSingle().NonLazy();
             Container.Bind<IGameState>().To<ExitState>().AsSingle().NonLazy();
             Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle().NonLazy();
             Container.Bind<Bootstrapper>().AsSingle();

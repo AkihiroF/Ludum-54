@@ -1,3 +1,5 @@
+using GameUISystem;
+using ResourceSystem;
 using UnityEngine;
 using Zenject;
 
