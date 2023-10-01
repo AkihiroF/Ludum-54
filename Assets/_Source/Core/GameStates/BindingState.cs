@@ -1,10 +1,6 @@
-using _Source.Input;
-using _Source.Player;
-using GameUISystem;
-using UnityEngine;
 using Zenject;
 
-namespace _Source.Core.GameStates
+namespace Core.GameStates
 {
     public class BindingState : IGameState
     {
@@ -38,6 +34,7 @@ namespace _Source.Core.GameStates
 
         private void SubscribeToEvents()
         {
+            _playerInput.PlayerActions.RotateItem.performed += _inputHandler.InputRotateItem;
             _playerInput.PlayerActions.ScalingUp.performed += _inputHandler.InputUpScaling;
             _playerInput.PlayerActions.ScalingDown.performed += _inputHandler.InputDownScaling;
             _playerInput.PlayerActions.Interaction.performed += _inputHandler.Interaction;

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using _Source.Core.GameStates;
-using _Source.Events;
-using _Source.Services;
+using Core.GameStates;
+using Events;
+using Services;
 
-namespace _Source.Core
+namespace Core
 {
     public class GameStateMachine : IGameStateMachine, IDisposable
     {

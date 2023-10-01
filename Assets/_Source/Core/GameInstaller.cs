@@ -1,9 +1,3 @@
-using _Source.Core;
-using _Source.Core.GameStates;
-using _Source.Input;
-using _Source.Player;
-using GameUISystem;
-using ResourceSystem;
 using UnityEngine;
 using Zenject;
 

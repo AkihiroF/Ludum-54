@@ -62,6 +62,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateItem"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a0e1aae-4a07-4d48-896e-78901d87b9e8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f254512-56c8-4e84-a95c-aa4fb4765fa2"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(y=0.2)"",
+                    ""groups"": """",
+                    ""action"": ""RotateItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerActions_ScalingUp = m_PlayerActions.FindAction("Scaling Up", throwIfNotFound: true);
         m_PlayerActions_ScalingDown = m_PlayerActions.FindAction("Scaling Down", throwIfNotFound: true);
         m_PlayerActions_Interaction = m_PlayerActions.FindAction("Interaction", throwIfNotFound: true);
+        m_PlayerActions_RotateItem = m_PlayerActions.FindAction("RotateItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_ScalingUp;
     private readonly InputAction m_PlayerActions_ScalingDown;
     private readonly InputAction m_PlayerActions_Interaction;
+    private readonly InputAction m_PlayerActions_RotateItem;
     public struct PlayerActionsActions
     {
         private @PlayerInput m_Wrapper;
@@ -237,6 +259,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @ScalingUp => m_Wrapper.m_PlayerActions_ScalingUp;
         public InputAction @ScalingDown => m_Wrapper.m_PlayerActions_ScalingDown;
         public InputAction @Interaction => m_Wrapper.m_PlayerActions_Interaction;
+        public InputAction @RotateItem => m_Wrapper.m_PlayerActions_RotateItem;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @RotateItem.started += instance.OnRotateItem;
+            @RotateItem.performed += instance.OnRotateItem;
+            @RotateItem.canceled += instance.OnRotateItem;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -274,6 +300,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @RotateItem.started -= instance.OnRotateItem;
+            @RotateItem.performed -= instance.OnRotateItem;
+            @RotateItem.canceled -= instance.OnRotateItem;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -297,5 +326,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnScalingUp(InputAction.CallbackContext context);
         void OnScalingDown(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnRotateItem(InputAction.CallbackContext context);
     }
 }

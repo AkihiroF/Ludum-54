@@ -1,9 +1,8 @@
-﻿using _Source.Events;
-using _Source.Services;
 using ObjectSystem;
+using Services;
 using UnityEngine;
 
-namespace _Source.Player
+namespace Player
 {
     public class PlayerInteraction : MonoBehaviour, IInteraction
     {
@@ -55,24 +54,23 @@ namespace _Source.Player
                 && !_interactionWithTheInterior.HaveItem)
             {
                 _interactionWithTheInterior.Selection(_hit.transform);
+                Signals.Get<OnUpdateGameState>().Dispatch();
             }
             else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
             {
                 _interactionWithTheKey.Selection(_hit.transform.gameObject);
+                Signals.Get<OnUpdateGameState>().Dispatch();
             }
             else if (_interactionWithTheInterior.HaveItem)
             {
                 _interactionWithTheInterior.Drop();
+                Signals.Get<OnUpdateGameState>().Dispatch();
             }
         }
 
-        public void ObjectRotate()
+        public void ObjectRotate(float angle)
         {
-            // if (Input.GetKey(KeyCode.Mouse0)
-            //     && _interactionWithTheInterior.HaveItem)
-            // {
-            //     // TODO Rotate object AxisX
-            // }
+            _interactionWithTheInterior.RotateObject(angle);
         }
     }
 }

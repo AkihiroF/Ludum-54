@@ -1,7 +1,6 @@
-using System;
-using _Source.Core.GameStates;
+using Core.GameStates;
 
-namespace _Source.Core
+namespace Core
 {
     public interface IGameStateMachine
     {

@@ -1,8 +1,9 @@
-using _Source.Player;
+using Player;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace _Source.Input
+namespace Input
 {
     public class InputHandler
     {
@@ -30,6 +31,12 @@ namespace _Source.Input
         public void Interaction(InputAction.CallbackContext obj)
         {
             _interaction.InteractionWithObjects();
+        }
+
+        public void InputRotateItem(InputAction.CallbackContext obj)
+        {
+            float rotateAmount = obj.ReadValue<Vector2>().y;
+            _interaction.ObjectRotate(rotateAmount);
         }
     }
 }

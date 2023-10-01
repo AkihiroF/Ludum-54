@@ -1,7 +1,3 @@
-using _Source.Core;
-using _Source.Core.GameStates;
-using _Source.Events;
-using _Source.Services;
 using UnityEngine;
 using Zenject;
 
