@@ -1,9 +1,9 @@
-﻿using _Source.Input;
-using GameUISystem;
+﻿using GameUISystem;
+using Input;
 using ResourceSystem;
 using Zenject;
 
-namespace _Source.Core.GameStates
+namespace Core.GameStates
 {
     public class ExitState : IGameState
     {

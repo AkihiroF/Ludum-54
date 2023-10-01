@@ -1,5 +1,5 @@
-﻿using _Source.Events;
-using _Source.Services;
+﻿using Events;
+using Services;
 using UnityEngine;
 
 namespace ObjectSystem

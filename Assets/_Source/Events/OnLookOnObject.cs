@@ -1,6 +1,6 @@
-﻿using _Source.Services;
+﻿using Services;
 
-namespace _Source.Events
+namespace Events
 {
     public class OnLookOnObject : ASignal
     {
