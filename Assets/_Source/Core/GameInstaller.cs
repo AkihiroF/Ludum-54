@@ -1,10 +1,11 @@
+using _Source.Core;
 using _Source.Core.GameStates;
 using _Source.Input;
 using _Source.Player;
 using UnityEngine;
 using Zenject;
 
-namespace _Source.Core
+namespace Core
 {
     public class GameInstaller : MonoInstaller
     {
