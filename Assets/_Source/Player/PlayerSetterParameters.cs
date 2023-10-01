@@ -1,4 +1,6 @@
+using System;
 using _Source.SO;
+using ObjectSystem;
 using UnityEngine;
 
 namespace _Source.Player
@@ -9,6 +11,7 @@ namespace _Source.Player
         [SerializeField] private PlayerParametersSo parametersSo;
         [SerializeField] private PlayerMovementComponent movementComponent;
         [SerializeField] private PlayerScalerComponent scalerComponent;
+        [SerializeField] private PlayerInteraction interaction;
 
         private SizePlayer _currentSize;
 
@@ -43,6 +46,7 @@ namespace _Source.Player
         {
             movementComponent.SwitchParametersMoving(parameters.speed);
             scalerComponent.SetObjectScale(parameters.scale);
+            interaction.SetParameters(parameters.radiusInteractable, parameters.interactableInteriorLayers, parameters.interactableKeyLayers);
         }
 
         private void ChangeSize(int sizeDelta)

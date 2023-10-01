@@ -41,6 +41,7 @@ namespace _Source.SO
         public float speed;
         public float scale;
         public float radiusInteractable;
-        public LayerMask interactableLayers;
+        public LayerMask interactableInteriorLayers;
+        public LayerMask interactableKeyLayers;
     }
 }

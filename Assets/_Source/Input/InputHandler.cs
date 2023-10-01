@@ -7,11 +7,13 @@ namespace _Source.Input
     public class InputHandler
     {
         private ISetterParameters _setterParameters;
+        private IInteraction _interaction;
 
         [Inject]
-        private void Construct(ISetterParameters setterParameters)
+        private void Construct(ISetterParameters setterParameters, IInteraction interaction)
         {
             _setterParameters = setterParameters;
+            _interaction = interaction;
         }
         
 
@@ -23,6 +25,11 @@ namespace _Source.Input
         public void InputDownScaling(InputAction.CallbackContext obj)
         {
            _setterParameters.DownSizeParameters();
+        }
+
+        public void Interaction(InputAction.CallbackContext obj)
+        {
+            _interaction.InteractionWithObjects();
         }
     }
 }
