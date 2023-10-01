@@ -22,9 +22,148 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerInput"",
-    ""maps"": [],
+    ""maps"": [
+        {
+            ""name"": ""PlayerActions"",
+            ""id"": ""b7073303-1afb-4087-bff7-9eb9d6f21dcb"",
+            ""actions"": [
+                {
+                    ""name"": ""Moving"",
+                    ""type"": ""Value"",
+                    ""id"": ""c4d5899c-7641-4b9e-ab31-6a4a02c53b5c"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Scaling Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""4313e4df-c5d6-4857-9cab-2d3db0b6d448"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scaling Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""43a13bbe-da16-44e6-833a-a9f52dc36067"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""b68f16d0-e9c1-45e5-b22c-1553ff5ffe5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9417b73d-70f3-48cf-819c-b39eb82f005d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scaling Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""473e8ad1-4230-4669-9808-add34c76b5b6"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scaling Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""07a536a9-db4e-4b3d-95ab-550aadcd20a6"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""84c7ef47-358a-4590-a739-40d8e81ddcb9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9fb94a16-389e-4955-93c9-c08d52a9c888"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""ce96aac1-67a2-461e-aa00-ea7ea656b5d7"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""97046ba9-493c-42b9-b9d9-b4d1c54a6698"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c82addb-7b26-477b-aa0c-59a6636ecc8c"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
     ""controlSchemes"": []
 }");
+        // PlayerActions
+        m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
+        m_PlayerActions_Moving = m_PlayerActions.FindAction("Moving", throwIfNotFound: true);
+        m_PlayerActions_ScalingUp = m_PlayerActions.FindAction("Scaling Up", throwIfNotFound: true);
+        m_PlayerActions_ScalingDown = m_PlayerActions.FindAction("Scaling Down", throwIfNotFound: true);
+        m_PlayerActions_Interaction = m_PlayerActions.FindAction("Interaction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -81,5 +220,82 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public int FindBinding(InputBinding bindingMask, out InputAction action)
     {
         return asset.FindBinding(bindingMask, out action);
+    }
+
+    // PlayerActions
+    private readonly InputActionMap m_PlayerActions;
+    private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
+    private readonly InputAction m_PlayerActions_Moving;
+    private readonly InputAction m_PlayerActions_ScalingUp;
+    private readonly InputAction m_PlayerActions_ScalingDown;
+    private readonly InputAction m_PlayerActions_Interaction;
+    public struct PlayerActionsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public PlayerActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Moving => m_Wrapper.m_PlayerActions_Moving;
+        public InputAction @ScalingUp => m_Wrapper.m_PlayerActions_ScalingUp;
+        public InputAction @ScalingDown => m_Wrapper.m_PlayerActions_ScalingDown;
+        public InputAction @Interaction => m_Wrapper.m_PlayerActions_Interaction;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
+            @Moving.started += instance.OnMoving;
+            @Moving.performed += instance.OnMoving;
+            @Moving.canceled += instance.OnMoving;
+            @ScalingUp.started += instance.OnScalingUp;
+            @ScalingUp.performed += instance.OnScalingUp;
+            @ScalingUp.canceled += instance.OnScalingUp;
+            @ScalingDown.started += instance.OnScalingDown;
+            @ScalingDown.performed += instance.OnScalingDown;
+            @ScalingDown.canceled += instance.OnScalingDown;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
+        }
+
+        private void UnregisterCallbacks(IPlayerActionsActions instance)
+        {
+            @Moving.started -= instance.OnMoving;
+            @Moving.performed -= instance.OnMoving;
+            @Moving.canceled -= instance.OnMoving;
+            @ScalingUp.started -= instance.OnScalingUp;
+            @ScalingUp.performed -= instance.OnScalingUp;
+            @ScalingUp.canceled -= instance.OnScalingUp;
+            @ScalingDown.started -= instance.OnScalingDown;
+            @ScalingDown.performed -= instance.OnScalingDown;
+            @ScalingDown.canceled -= instance.OnScalingDown;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
+        }
+
+        public void RemoveCallbacks(IPlayerActionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+    public interface IPlayerActionsActions
+    {
+        void OnMoving(InputAction.CallbackContext context);
+        void OnScalingUp(InputAction.CallbackContext context);
+        void OnScalingDown(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
 }
