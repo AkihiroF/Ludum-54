@@ -1,6 +1,7 @@
 ﻿using GameUISystem;
 using Input;
 using ResourceSystem;
+using UnityEngine;
 using Zenject;
 
 namespace Core.GameStates

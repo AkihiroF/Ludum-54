@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Presentation/Scenes/TestInteraction.unity
     guid: 716e16ff05a37304e9e8a64bab33861b
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/TheEndScene.unity
+    guid: 243c98fef22b549cf9895181af82428b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9491e8b8a0eb746b4910d721f3ec105a, type: 2}
