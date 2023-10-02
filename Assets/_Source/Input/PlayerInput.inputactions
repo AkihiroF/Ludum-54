@@ -152,6 +152,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UIActions",
+            "id": "0afe2963-84a6-48d1-af20-978c78174ee9",
+            "actions": [
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "1f87462e-7e1f-4833-aef9-0ac6c6a6b031",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5a57f27e-31e6-4b5b-84b3-307d9e8527ad",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
