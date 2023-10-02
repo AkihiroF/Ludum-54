@@ -22,9 +22,200 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerInput"",
-    ""maps"": [],
+    ""maps"": [
+        {
+            ""name"": ""PlayerActions"",
+            ""id"": ""b7073303-1afb-4087-bff7-9eb9d6f21dcb"",
+            ""actions"": [
+                {
+                    ""name"": ""Moving"",
+                    ""type"": ""Value"",
+                    ""id"": ""c4d5899c-7641-4b9e-ab31-6a4a02c53b5c"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Scaling Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""4313e4df-c5d6-4857-9cab-2d3db0b6d448"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scaling Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""43a13bbe-da16-44e6-833a-a9f52dc36067"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""b68f16d0-e9c1-45e5-b22c-1553ff5ffe5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateItem"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a0e1aae-4a07-4d48-896e-78901d87b9e8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9417b73d-70f3-48cf-819c-b39eb82f005d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scaling Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""473e8ad1-4230-4669-9808-add34c76b5b6"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scaling Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""07a536a9-db4e-4b3d-95ab-550aadcd20a6"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""84c7ef47-358a-4590-a739-40d8e81ddcb9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9fb94a16-389e-4955-93c9-c08d52a9c888"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""ce96aac1-67a2-461e-aa00-ea7ea656b5d7"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""97046ba9-493c-42b9-b9d9-b4d1c54a6698"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Moving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c82addb-7b26-477b-aa0c-59a6636ecc8c"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f254512-56c8-4e84-a95c-aa4fb4765fa2"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(y=0.2)"",
+                    ""groups"": """",
+                    ""action"": ""RotateItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UIActions"",
+            ""id"": ""0afe2963-84a6-48d1-af20-978c78174ee9"",
+            ""actions"": [
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f87462e-7e1f-4833-aef9-0ac6c6a6b031"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5a57f27e-31e6-4b5b-84b3-307d9e8527ad"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
     ""controlSchemes"": []
 }");
+        // PlayerActions
+        m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
+        m_PlayerActions_Moving = m_PlayerActions.FindAction("Moving", throwIfNotFound: true);
+        m_PlayerActions_ScalingUp = m_PlayerActions.FindAction("Scaling Up", throwIfNotFound: true);
+        m_PlayerActions_ScalingDown = m_PlayerActions.FindAction("Scaling Down", throwIfNotFound: true);
+        m_PlayerActions_Interaction = m_PlayerActions.FindAction("Interaction", throwIfNotFound: true);
+        m_PlayerActions_RotateItem = m_PlayerActions.FindAction("RotateItem", throwIfNotFound: true);
+        // UIActions
+        m_UIActions = asset.FindActionMap("UIActions", throwIfNotFound: true);
+        m_UIActions_Enter = m_UIActions.FindAction("Enter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -81,5 +272,141 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public int FindBinding(InputBinding bindingMask, out InputAction action)
     {
         return asset.FindBinding(bindingMask, out action);
+    }
+
+    // PlayerActions
+    private readonly InputActionMap m_PlayerActions;
+    private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
+    private readonly InputAction m_PlayerActions_Moving;
+    private readonly InputAction m_PlayerActions_ScalingUp;
+    private readonly InputAction m_PlayerActions_ScalingDown;
+    private readonly InputAction m_PlayerActions_Interaction;
+    private readonly InputAction m_PlayerActions_RotateItem;
+    public struct PlayerActionsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public PlayerActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Moving => m_Wrapper.m_PlayerActions_Moving;
+        public InputAction @ScalingUp => m_Wrapper.m_PlayerActions_ScalingUp;
+        public InputAction @ScalingDown => m_Wrapper.m_PlayerActions_ScalingDown;
+        public InputAction @Interaction => m_Wrapper.m_PlayerActions_Interaction;
+        public InputAction @RotateItem => m_Wrapper.m_PlayerActions_RotateItem;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
+            @Moving.started += instance.OnMoving;
+            @Moving.performed += instance.OnMoving;
+            @Moving.canceled += instance.OnMoving;
+            @ScalingUp.started += instance.OnScalingUp;
+            @ScalingUp.performed += instance.OnScalingUp;
+            @ScalingUp.canceled += instance.OnScalingUp;
+            @ScalingDown.started += instance.OnScalingDown;
+            @ScalingDown.performed += instance.OnScalingDown;
+            @ScalingDown.canceled += instance.OnScalingDown;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
+            @RotateItem.started += instance.OnRotateItem;
+            @RotateItem.performed += instance.OnRotateItem;
+            @RotateItem.canceled += instance.OnRotateItem;
+        }
+
+        private void UnregisterCallbacks(IPlayerActionsActions instance)
+        {
+            @Moving.started -= instance.OnMoving;
+            @Moving.performed -= instance.OnMoving;
+            @Moving.canceled -= instance.OnMoving;
+            @ScalingUp.started -= instance.OnScalingUp;
+            @ScalingUp.performed -= instance.OnScalingUp;
+            @ScalingUp.canceled -= instance.OnScalingUp;
+            @ScalingDown.started -= instance.OnScalingDown;
+            @ScalingDown.performed -= instance.OnScalingDown;
+            @ScalingDown.canceled -= instance.OnScalingDown;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
+            @RotateItem.started -= instance.OnRotateItem;
+            @RotateItem.performed -= instance.OnRotateItem;
+            @RotateItem.canceled -= instance.OnRotateItem;
+        }
+
+        public void RemoveCallbacks(IPlayerActionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // UIActions
+    private readonly InputActionMap m_UIActions;
+    private List<IUIActionsActions> m_UIActionsActionsCallbackInterfaces = new List<IUIActionsActions>();
+    private readonly InputAction m_UIActions_Enter;
+    public struct UIActionsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public UIActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Enter => m_Wrapper.m_UIActions_Enter;
+        public InputActionMap Get() { return m_Wrapper.m_UIActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsActionsCallbackInterfaces.Add(instance);
+            @Enter.started += instance.OnEnter;
+            @Enter.performed += instance.OnEnter;
+            @Enter.canceled += instance.OnEnter;
+        }
+
+        private void UnregisterCallbacks(IUIActionsActions instance)
+        {
+            @Enter.started -= instance.OnEnter;
+            @Enter.performed -= instance.OnEnter;
+            @Enter.canceled -= instance.OnEnter;
+        }
+
+        public void RemoveCallbacks(IUIActionsActions instance)
+        {
+            if (m_Wrapper.m_UIActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActionsActions @UIActions => new UIActionsActions(this);
+    public interface IPlayerActionsActions
+    {
+        void OnMoving(InputAction.CallbackContext context);
+        void OnScalingUp(InputAction.CallbackContext context);
+        void OnScalingDown(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnRotateItem(InputAction.CallbackContext context);
+    }
+    public interface IUIActionsActions
+    {
+        void OnEnter(InputAction.CallbackContext context);
     }
 }
