@@ -3,6 +3,7 @@ using Core.GameStates;
 using DG.Tweening;
 using Events;
 using Services;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,11 +17,19 @@ namespace ObjectSystem
         [SerializeField] private float fadeDuration = 1f;
         [SerializeField] private int nextSceneID;
         [SerializeField] private bool startWithFadeIn;
-        [SerializeField] private AudioSource source;
+        [SerializeField] private AudioSource sourceCloseDoor;
+        [SerializeField] private AudioSource sourceOpenDoor;
 
-        [Inject] private IGameStateMachine _state;
-
+        private IGameStateMachine _state;
+        private ISound _sound;
         private bool _canOpen;
+
+        [Inject]
+        private void Construct(IGameStateMachine state, ISound sound)
+        {
+            _state = state;
+            _sound = sound;
+        }
 
         private void Start()
         {
@@ -56,10 +65,12 @@ namespace ObjectSystem
         {
             if (!_canOpen)
             {
+                _sound.Play(sourceCloseDoor);
                 Signals.Get<OnNotAllKey>().Dispatch();
                 return;
             }
             
+            _sound.Play(sourceOpenDoor);
             fadeScreen.DOFade(1, fadeDuration).OnComplete(() =>
             {
                 _state.SwitchGameState<ExitState>();

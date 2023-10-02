@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: aff5918d8769a49bca6521a848bd9c9c
   - enabled: 1
     path: Assets/_Presentation/Scenes/Lvls/Tutorial.unity
-    guid: df576dd1b09a71448bbeae71f8c8edd6
+    guid: 198eb2724f7a18c4fa76b8cafac43467
   - enabled: 1
     path: Assets/_Presentation/Scenes/Level1.unity
     guid: a05887f9b5698824c9e6a81475fc79ed
