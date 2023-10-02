@@ -4,6 +4,7 @@ using Input;
 using Player;
 using ResourceSystem;
 using ObjectSystem;
+using SoundSystem;
 using UnityEngine;
 using Zenject;
 
@@ -37,6 +38,8 @@ namespace Core
             Container.Bind<IUIController>().To<GameUI>().AsSingle();
 
             Container.Bind<IResource>().To<Key>().AsSingle().WithArguments(maxCount);
+
+            Container.Bind<ISound>().To<Sound>().AsSingle();
         }
     }
 }
