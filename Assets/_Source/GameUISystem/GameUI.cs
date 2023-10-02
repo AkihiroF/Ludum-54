@@ -1,5 +1,6 @@
 ﻿using Events;
 using Services;
+using UnityEngine.UI;
 using Zenject;
 
 namespace GameUISystem
@@ -34,6 +35,11 @@ namespace GameUISystem
         {
             _view.RedFlashing();
         }
+
+        private void ChangePlayerSizeIcon(Image image)
+        {
+            _view.ChangePlayerSizeIcon(image);
+        }
         
         public void SubscribeToEvents()
         {
@@ -41,6 +47,7 @@ namespace GameUISystem
             Signals.Get<OnNotLookOnObject>().AddListener(NotLookOnItem);
             Signals.Get<OnChangeResource>().AddListener(KeyCount);
             Signals.Get<OnNotAllKey>().AddListener(RedFlashing);
+            Signals.Get<OnChangePlayerSize>().AddListener(ChangePlayerSizeIcon);
         }
 
         public void UnSubscribeToEvents()
@@ -50,6 +57,7 @@ namespace GameUISystem
             Signals.Get<OnChangeResource>().RemoveListener(KeyCount);
             Signals.Get<OnChangeResource>().RemoveListener(KeyCount);
             Signals.Get<OnNotAllKey>().RemoveListener(RedFlashing);
+            Signals.Get<OnChangePlayerSize>().RemoveListener(ChangePlayerSizeIcon);
         }
     }
 }

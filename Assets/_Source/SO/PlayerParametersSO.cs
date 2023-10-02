@@ -1,6 +1,7 @@
 using System;
 using Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SO
 {
@@ -41,6 +42,7 @@ namespace SO
         public float speed;
         public float scale;
         public float radiusInteractable;
+        public Image sizeImage;
         public LayerMask interactableInteriorLayers;
         public LayerMask interactableKeyLayers;
     }
