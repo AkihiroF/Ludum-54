@@ -1,4 +1,6 @@
-﻿namespace GameUISystem
+﻿using UnityEngine.UI;
+
+namespace GameUISystem
 {
     public interface IUIView
     {
@@ -6,5 +8,6 @@
         void HintDisable();
         void KeyCount(string count, string maxCount);
         void RedFlashing();
+        void ChangePlayerSizeIcon(Image image);
     }
 }

@@ -1,17 +1,30 @@
 ﻿using DG.Tweening;
+using SoundSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Zenject;
 
 namespace GameUISystem
 {
     public class GameUIView : MonoBehaviour, IUIView
     {
         [SerializeField] private GameObject hint;
-        [SerializeField] private Image image;
+        [FormerlySerializedAs("image")] [SerializeField] private Image imageKey;
         [SerializeField] private TMP_Text text;
+        [SerializeField] private Image imagePlayerSize;
+        [SerializeField] private AudioSource source;
+
+        private ISound _sound;
 
         private const float TIME_FLASHING = 0.5f;
+
+        [Inject]
+        private void Construct(ISound sound)
+        {
+            _sound = sound;
+        }
         
         public void HintEnable()
         {
@@ -30,14 +43,20 @@ namespace GameUISystem
         
         public void RedFlashing()
         {
-            image.DOColor(Color.red, TIME_FLASHING).OnComplete(() =>
+            _sound.Play(source);
+            imageKey.DOColor(Color.red, TIME_FLASHING).OnComplete(() =>
             {
-                image.DOColor(Color.white, TIME_FLASHING);
+                imageKey.DOColor(Color.white, TIME_FLASHING);
             });
             text.DOColor(Color.red, TIME_FLASHING).OnComplete(() =>
             {
                 text.DOColor(Color.white, TIME_FLASHING);
             });
+        }
+
+        public void ChangePlayerSizeIcon(Image image)
+        {
+            imagePlayerSize.sprite = image.sprite;
         }
     }
 }
