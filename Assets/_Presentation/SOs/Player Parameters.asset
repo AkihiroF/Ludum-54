@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Player Parameters
   m_EditorClassIdentifier: 
   BigPlayerParameters:
-    speed: 20
-    scale: 5
+    speed: 35
+    scale: 7
     radiusInteractable: 6
     sizeImage: {fileID: 518557307421692681, guid: 2d70404dd0bd0e549834725b1fe7c0a5, type: 3}
     interactableInteriorLayers:
@@ -24,7 +24,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
   MediumParameters:
-    speed: 20
+    speed: 30
     scale: 3
     radiusInteractable: 4
     sizeImage: {fileID: 518557307421692681, guid: 3822877e20d751c4e8d2c620db246e0c, type: 3}
@@ -35,7 +35,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
   SmallParameters:
-    speed: 20
+    speed: 15
     scale: 0.3
     radiusInteractable: 2
     sizeImage: {fileID: 518557307421692681, guid: eb61dc6ee5de3314a922c67f25858d27, type: 3}
