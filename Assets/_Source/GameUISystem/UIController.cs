@@ -1,3 +1,4 @@
+using System;
 using SoundSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,14 +24,21 @@ namespace GameUISystem
         private const string SOUND_NAME = "Sound";
 
         private InputAction _tutorialAction;
+        private ISceneTransitMenu _sceneTransit;
         private ISound _sound;
         
         [Inject]
         private void Construct(PlayerInput playerInput, ISceneTransitMenu sceneTransit, ISound sound)
         {
             _tutorialAction = playerInput.UIActions.Enter;
-            _tutorialAction.performed += sceneTransit.OnTransit;
+            _sceneTransit = sceneTransit;
             _sound = sound;
+        }
+        
+        private void UnSubscribe(InputAction.CallbackContext obj)
+        {
+            _tutorialAction.performed -= _sceneTransit.OnTransit;
+            _tutorialAction.performed -= UnSubscribe;
         }
 
         private void Awake()
@@ -43,6 +51,10 @@ namespace GameUISystem
             settingsToMainButton.onClick.AddListener(SoundPlay);
 
             slider.value = PlayerPrefs.HasKey(SOUND_NAME) ? PlayerPrefs.GetFloat(SOUND_NAME) : 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            _tutorialAction.performed += UnSubscribe;
+            _tutorialAction.performed += _sceneTransit.OnTransit;
         }
 
         private void ShowMainMenuPanel()
