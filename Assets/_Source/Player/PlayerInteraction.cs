@@ -19,7 +19,13 @@ namespace Player
         private LayerMask _selectionTheInterior;
         private LayerMask _selectionTheKey;
 
-        [Inject] private ISceneTransit _transit;
+        private ISceneTransit _transit;
+
+        [Inject]
+        private void Construct(ISceneTransit transit)
+        {
+            _transit = transit;
+        }
 
         public bool HoldObject 
             => _interactionWithTheInterior.HaveItem;
