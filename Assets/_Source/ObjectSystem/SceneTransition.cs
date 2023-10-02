@@ -62,6 +62,7 @@ namespace ObjectSystem
             fadeScreen.DOFade(1, fadeDuration).OnComplete(() =>
             {
                 _state.SwitchGameState<ExitState>();
+                Destroy(FindObjectOfType<SceneContext>().gameObject);
                 SceneManager.LoadScene(nextSceneID);
             });
         }
