@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Player Parameters
   m_EditorClassIdentifier: 
   BigPlayerParameters:
-    speed: 48.54
-    scale: 10
+    speed: 35
+    scale: 7
     radiusInteractable: 6
     interactableInteriorLayers:
       serializedVersion: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
   MediumParameters:
-    speed: 45.42
+    speed: 30
     scale: 3
     radiusInteractable: 4
     interactableInteriorLayers:
@@ -33,7 +33,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
   SmallParameters:
-    speed: 25.8
+    speed: 15
     scale: 0.3
     radiusInteractable: 2
     interactableInteriorLayers:
