@@ -1,3 +1,5 @@
+using Events;
+using Services;
 using SO;
 using UnityEngine;
 
@@ -51,6 +53,7 @@ namespace Player
             movementComponent.SwitchParametersMoving(parameters.speed);
             scalerComponent.SetObjectScale(parameters.scale);
             interaction.SetParameters(parameters.radiusInteractable, parameters.interactableInteriorLayers, parameters.interactableKeyLayers);
+            Signals.Get<OnChangePlayerSize>().Dispatch(parameters.sizeImage);
         }
 
         private void ChangeSize(int sizeDelta)
