@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameUISystem
 {
@@ -8,6 +9,6 @@ namespace GameUISystem
         void HintDisable();
         void KeyCount(string count, string maxCount);
         void RedFlashing();
-        void ChangePlayerSizeIcon(Image image);
+        void ChangePlayerSizeIcon(Sprite sprite);
     }
 }

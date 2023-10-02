@@ -16,10 +16,11 @@ namespace ObjectSystem
         [SerializeField] private float fadeDuration = 1f;
         [SerializeField] private int nextSceneID;
         [SerializeField] private bool startWithFadeIn;
+        [SerializeField] private AudioSource source;
 
         [Inject] private IGameStateMachine _state;
 
-        private bool _canOpen = false;
+        private bool _canOpen;
 
         private void Start()
         {

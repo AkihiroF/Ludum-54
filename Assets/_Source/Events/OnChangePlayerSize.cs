@@ -1,9 +1,10 @@
 ﻿using Services;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Events
 {
-    public class OnChangePlayerSize : ASignal<Image>
+    public class OnChangePlayerSize : ASignal<Sprite>
     {
         
     }

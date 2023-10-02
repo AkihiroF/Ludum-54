@@ -54,9 +54,9 @@ namespace GameUISystem
             });
         }
 
-        public void ChangePlayerSizeIcon(Image image)
+        public void ChangePlayerSizeIcon(Sprite sprite)
         {
-            imagePlayerSize.sprite = image.sprite;
+            imagePlayerSize.sprite = sprite;
         }
     }
 }

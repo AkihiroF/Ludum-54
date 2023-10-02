@@ -9,7 +9,7 @@ namespace SoundSystem
 
         private const string SOUND_NAME = "Sound";
 
-        private void Start()
+        private void Awake()
         {
             mixer.SetFloat(SOUND_NAME, PlayerPrefs.HasKey(SOUND_NAME) ? PlayerPrefs.GetFloat(SOUND_NAME) : 0);
             PlayerPrefs.Save();

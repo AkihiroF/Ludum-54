@@ -1,5 +1,6 @@
 ﻿using Events;
 using Services;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -36,7 +37,7 @@ namespace GameUISystem
             _view.RedFlashing();
         }
 
-        private void ChangePlayerSizeIcon(Image image)
+        private void ChangePlayerSizeIcon(Sprite image)
         {
             _view.ChangePlayerSizeIcon(image);
         }
