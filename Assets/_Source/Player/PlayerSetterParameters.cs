@@ -55,6 +55,11 @@ namespace Player
 
         private void ChangeSize(int sizeDelta)
         {
+            if (interaction.HoldObject)
+            {
+                return;
+            }
+            
             SizePlayer newSize = _currentSize + sizeDelta;
 
             if (CurrentZone != null && newSize > CurrentZone.GetMaxSize)

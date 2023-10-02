@@ -1,18 +1,16 @@
-﻿using System;
 using Events;
 using ObjectSystem;
 using Services;
 using UnityEngine;
+using Zenject;
 
 namespace Player
 {
     public class PlayerInteraction : MonoBehaviour, IInteraction
     {
-        public event Action LookOnItem;
-        public event Action NotLookOnItem;
-        
         [SerializeField] private Transform transformCamera;
         [SerializeField] private Transform hand;
+        [SerializeField] private LayerMask selectionTheDoor;
         
         private RaycastHit _hit;
         private InteractionWithTheInterior _interactionWithTheInterior; 
@@ -20,6 +18,17 @@ namespace Player
         private float _distance;
         private LayerMask _selectionTheInterior;
         private LayerMask _selectionTheKey;
+
+        private ISceneTransit _transit;
+
+        [Inject]
+        private void Construct(ISceneTransit transit)
+        {
+            _transit = transit;
+        }
+
+        public bool HoldObject 
+            => _interactionWithTheInterior.HaveItem;
 
         private void Start()
         {
@@ -36,13 +45,14 @@ namespace Player
         {
             if (Physics.Raycast(transformCamera.position, transformCamera.forward,  out _hit, _distance, _selectionTheInterior)
                 && !_interactionWithTheInterior.HaveItem
-                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
+                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey)
+                || Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, selectionTheDoor))
             {
-                LookOnItem?.Invoke();
+                Signals.Get<OnLookOnObject>().Dispatch();
             }
             else
             {
-                NotLookOnItem?.Invoke();
+                Signals.Get<OnNotLookOnObject>().Dispatch();
             }
         }
 
@@ -58,14 +68,17 @@ namespace Player
             if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheInterior)
                 && !_interactionWithTheInterior.HaveItem)
             {
-                //LookOnItem?.Invoke();
                 _interactionWithTheInterior.Selection(_hit.transform);
                 Signals.Get<OnUpdateGameState>().Dispatch();
             }
             else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, _selectionTheKey))
             {
-                //LookOnItem?.Invoke();
                 _interactionWithTheKey.Selection(_hit.transform.gameObject);
+                Signals.Get<OnUpdateGameState>().Dispatch();
+            }
+            else if (Physics.Raycast(transformCamera.position, transformCamera.forward, out _hit, _distance, selectionTheDoor))
+            {
+                _transit.OnStartTransit();
                 Signals.Get<OnUpdateGameState>().Dispatch();
             }
             else if (_interactionWithTheInterior.HaveItem)
